@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class ClawDistance : MonoBehaviour
 {
-    public DistanceJoint2D clawJoint;
+    public ConfigurableJoint clawJoint;
     public float clawMin, clawMax;
     public float clawStep;
     public GameObject claw;
 
     private void Start()
     {
-        clawJoint.distance = clawMin;
+        clawJoint.projectionDistance = clawMin;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (clawJoint.distance >= clawMin && clawJoint.distance <= clawMax)
+        if (clawJoint.projectionDistance >= clawMin && clawJoint.projectionDistance <= clawMax)
         {
-            clawJoint.distance -= Input.mouseScrollDelta.y * clawStep;
+            clawJoint.projectionDistance -= Input.mouseScrollDelta.y * clawStep;
         }
 
-        if (clawJoint.distance < clawMin)
+        if (clawJoint.projectionDistance < clawMin)
         {
-            clawJoint.distance = clawMin;
+            clawJoint.projectionDistance = clawMin;
         }
-        else if (clawJoint.distance > clawMax)
+        else if (clawJoint.projectionDistance > clawMax)
         {
-            clawJoint.distance = clawMax;
+            clawJoint.projectionDistance = clawMax;
         }
 
-        if(clawJoint.distance == clawMin)
+        if(clawJoint.projectionDistance == clawMin)
         {
             claw.transform.localPosition = new Vector2(0, -clawMin);
         }

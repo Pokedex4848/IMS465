@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //Public variables
-    public Rigidbody2D rb;
+    public Rigidbody rb;
     public float hSpeed, vSpeed;
 
     //Private variables

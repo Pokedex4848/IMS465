@@ -9,10 +9,10 @@ public class ClawController : MonoBehaviour
     public GameObject[] claws;
     public GameObject grabOffset;
     public LineRenderer lineRenderer;
-    public CircleCollider2D circleCollider;
+    public SphereCollider circleCollider;
 
     private GameObject grabbedObject;
-    private Rigidbody2D grabbedrb;
+    private Rigidbody grabbedrb;
 
     // Update is called once per frame
     void Update()
@@ -41,7 +41,7 @@ public class ClawController : MonoBehaviour
                 grabbedObject.transform.position = new Vector3(grabOffset.transform.position.x, grabOffset.transform.position.y, 1);
                 grabbedObject.transform.rotation = transform.rotation;
                 grabbedrb.velocity = Vector2.zero;
-                grabbedObject.GetComponent<BoxCollider2D>().enabled = false;
+                grabbedObject.GetComponent<BoxCollider>().enabled = false;
             }
         }
         else
@@ -51,7 +51,7 @@ public class ClawController : MonoBehaviour
             {
                 grabbedObject.transform.parent = null;
                 grabbedObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-                grabbedObject.GetComponent<BoxCollider2D>().enabled = true;
+                grabbedObject.GetComponent<BoxCollider>().enabled = true;
                 grabbedObject = null;
             }
         }
@@ -65,7 +65,7 @@ public class ClawController : MonoBehaviour
         claws[3].transform.localRotation = Quaternion.Euler(scale, 0, scale);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay(Collider collision)
     {
         if(collision.CompareTag("Grabbable"))
         {
