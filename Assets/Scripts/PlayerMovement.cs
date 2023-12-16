@@ -14,10 +14,14 @@ public class PlayerMovement : MonoBehaviour
     private int idleCheck = 0;
     private bool idleIncrease;
     private Vector3 idlePosition;
-
+    public GameObject otherDestroy;
     // Update is called once per frame
     void Update()
     {
+        transform.parent = null;
+
+        if (otherDestroy != null)
+            Destroy(otherDestroy);
         hDirection = Input.GetAxis("Horizontal");
         vDirection = Input.GetAxis("Vertical");
     }
